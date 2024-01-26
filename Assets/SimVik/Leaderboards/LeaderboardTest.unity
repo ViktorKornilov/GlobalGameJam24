@@ -811,7 +811,6 @@ GameObject:
   m_Component:
   - component: {fileID: 477520388}
   - component: {fileID: 477520387}
-  - component: {fileID: 477520389}
   m_Layer: 0
   m_Name: TODO
   m_TagString: Untagged
@@ -851,18 +850,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &477520389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 477520386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6864347776a94f9c96139236c018cf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &485198480
 GameObject:
   m_ObjectHideFlags: 0
@@ -1251,7 +1238,7 @@ SpriteRenderer:
   m_Size: {x: 0.29, y: 0.29}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &557726097

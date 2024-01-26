@@ -2,7 +2,7 @@ name: Build Project and Publish to itch.io
 on:
   workflow_dispatch:
   push:
-        branches: [main]
+        branches: [publish]
 jobs:
   build:
     name: Build Project and Publish to itch.io ✨
