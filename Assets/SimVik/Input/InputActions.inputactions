@@ -361,6 +361,17 @@
                     "action": "Drop",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "39d92a4c-0325-40a7-9ef4-3daeb6240950",
+                    "path": "<HID::Microsoft Xbox gamepad 2>/button2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Drop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
