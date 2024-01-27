@@ -64,16 +64,16 @@ public class Animator : MonoBehaviour
     {
         var speed = running? runSpeed : walkSpeed;
         
-        var legAngle = Mathf.Sin(Time.time * speed) * 45;
+        var legAngle = Mathf.Sin(Time.time * speed) * 45 + 180;
 
-        rightLeg.rotation = Quaternion.Euler(-180, 0, legAngle);
-        leftLeg.rotation = Quaternion.Euler(180, 0, -legAngle);
+        rightLeg.rotation = Quaternion.Euler(legAngle, 0, -4);
+        leftLeg.rotation = Quaternion.Euler(-legAngle, 0, 4);
 
         if (animateHands)
         {
-            var armAngle = Mathf.Sin(Time.time * (speed * armSpeedOffset)) * 45;
-            leftArm.rotation = Quaternion.Euler(170, -40, armAngle);
-            rightArm.rotation = Quaternion.Euler(-170, 40, -armAngle);
+            var armAngle = Mathf.Sin(Time.time * (speed * armSpeedOffset)) * 45 + 180;
+            leftArm.rotation = Quaternion.Euler(-armAngle, -40, 45);
+            rightArm.rotation = Quaternion.Euler(armAngle, 40, -45);
         }
 
         //var headBob = Mathf.Sin(Time.time * (speed * headSpeedOffset)) * 45;
