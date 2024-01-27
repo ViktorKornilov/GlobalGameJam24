@@ -30,6 +30,8 @@ public class Animator : MonoBehaviour
 
     [Header("VFX")] 
     public GameObject dazedParticles;
+    public ParticleSystem fartParticles;
+    public AudioSource fartSound;
     
     private float armSpeedOffset;
     private float headSpeedOffset;
@@ -78,5 +80,11 @@ public class Animator : MonoBehaviour
 
         //var headBob = Mathf.Sin(Time.time * (speed * headSpeedOffset)) * 45;
         //head.localPosition = new Vector3(0, 0.008f + headBob / 45 * 0.001f, 0) ;
+    }
+
+    public void Fart()
+    {
+        fartParticles.Play();
+        fartSound.Play();
     }
 }

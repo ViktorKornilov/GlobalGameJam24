@@ -10,9 +10,12 @@ public class PlayerInfo
 {
     public Transform transform;
     public float approval = 0;
+    public Transform uiBar;
 }
 public class AudienceManager : MonoBehaviour
 {
+    public static AudienceManager Instance;
+    
     public List<PlayerInfo> players;
     
     public List<Color> palette;
@@ -32,13 +35,19 @@ public class AudienceManager : MonoBehaviour
     [Header("Brains")]
     [Range(0,1)]
     public float chanceToReact = 0.1f;
-
     public float startingDistance = 3;
+    
     
     private Transform[,] audience;
     private Vector3[] audiencePositions;
     private bool[] inAction;
-    
+
+    private void Awake()
+    {
+        if(Instance == null) Instance = this;
+        else Destroy(gameObject);
+    }
+
     void Start()
     {
         audience = new Transform[segments, peoplePerSegment];
@@ -106,8 +115,11 @@ public class AudienceManager : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+    /*private void OnDrawGizmos()
     {
+        //check if play mode
+        if (!Application.isPlaying) return;
+        
         for (int i = 0; i < segments; i++)
         {
             var distance = Vector3.Distance(players[0].transform.position, audiencePositions[i]);
@@ -117,7 +129,7 @@ public class AudienceManager : MonoBehaviour
             
             Gizmos.DrawLine(players[0].transform.position, audiencePositions[i]);
         }
-    }
+    }*/
 
     public void Cheer(int segmentIndex)
     {
@@ -157,6 +169,25 @@ public class AudienceManager : MonoBehaviour
         for (int i = 0; i < segments; i++)
         {
             Cheer(i);
+        }
+    }
+
+    public void SetApproval(Transform player, float approval)
+    {
+        print(transform.name + " " + approval);
+        //find player
+        foreach (var p in players)
+        {
+            if (p.transform == player)
+            {
+                print(player.name);
+                p.approval += approval;
+
+                if (p.approval < 0) p.approval = 0;
+                
+                p.uiBar.DOScaleX(p.approval / 100f * 5, 0.3f).SetEase(Ease.OutBounce);
+                return;
+            }
         }
     }
 }
