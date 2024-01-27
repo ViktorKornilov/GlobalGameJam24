@@ -10,6 +10,7 @@ using Random = UnityEngine.Random;
 public class PlayerInfo
 {
     public Transform transform;
+    public GameObject crown;
     public float approval = 0;
     public Transform uiBar;
 }
@@ -19,6 +20,10 @@ public class AudienceManager : MonoBehaviour
     public static AudienceManager Instance;
     
     public List<PlayerInfo> players;
+
+    [Header("Crowd interactions")]
+    public GameObject throwable;
+    public float interval;
     
     public List<Color> palette;
     public GameObject observerPrefab;
@@ -82,6 +87,21 @@ public class AudienceManager : MonoBehaviour
                 
                 audience[s, p] = person.transform;
             }
+        }
+        
+        InvokeRepeating(nameof(ThrowStuff), 0, interval);
+    }
+
+    void ThrowStuff()
+    {
+        int count = Random.Range(0, 3);
+
+        for (int i = 0; i < count; i++)
+        {
+            var index = Random.Range(0, segments);
+            var pos = audience[index, 0];
+            var t = Instantiate(throwable, pos.position + Vector3.up, Quaternion.identity);
+            t.GetComponent<Rigidbody>().AddForce(Vector3.up * 5 + audience[index,0].forward * 5, ForceMode.Impulse);
         }
     }
 
@@ -183,13 +203,13 @@ public class AudienceManager : MonoBehaviour
 
     public void SetApproval(Transform player, float approval)
     {
-        print(transform.name + " " + approval);
+        //print(transform.name + " " + approval);
         //find player
         foreach (var p in players)
         {
             if (p.transform == player)
             {
-                print(player.name);
+                //print(player.name);
                 p.approval += approval;
 
                 if (p.approval < 0) p.approval = 0;
@@ -198,5 +218,24 @@ public class AudienceManager : MonoBehaviour
                 return;
             }
         }
+    }
+
+    public void CrownWinner()
+    {
+        //find player that has highes approval
+        PlayerInfo winner = null;
+        foreach (var p in players)
+        {
+            if (winner == null) winner = p;
+            else
+            {
+                if (p.approval > winner.approval) winner = p;
+            }
+        }
+        
+        
+        FindObjectOfType<CameraFollow>().target = new List<Transform>(){winner.transform};
+        Camera.main.DOFieldOfView(10, 0.5f);
+        winner.crown.SetActive(true);
     }
 }

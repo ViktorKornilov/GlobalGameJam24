@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using SimVik;
+using TMPro;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -33,13 +35,15 @@ public class Movement : MonoBehaviour
 	[Header("Approval")] 
 	public float approval = 2;
 	public float disapproval = -2;
+
+	public TextMeshProUGUI fartText;
+	private int fartStorage = 0;
 	
 	public bool canMove = true;
 
 	void Awake()
 	{
 		rb = GetComponent<Rigidbody>();
-
 	}
 
 
@@ -128,19 +132,54 @@ public class Movement : MonoBehaviour
 			AudienceManager.Instance.SetApproval(transform, disapproval);
 		}*/
 
-        if (Vector3.Distance(transform.position, enemy.position) < hitDistance)
+        if (Vector3.Distance(transform.position, enemy.position) < hitDistance && fartStorage > 0)
         {
-            //enemy.GetComponent<Movement>().GetDazed();
-			
+	        Sequence mySequence = DOTween.Sequence();
+
+	        mySequence.Append(Camera.main.DOFieldOfView(10, 0.5f).OnComplete(()=>
+                              	        {
+                              		        Time.timeScale = 0.5f;
+                              		        Time.fixedDeltaTime = 0.02f * Time.timeScale; 
+                              	        }));
+            
+            mySequence.Append(transform.DOLookAt(-enemy.position, 0.1f).OnComplete(() =>
+            {
+	            animator.Fart();
+	            enemy.GetComponent<Movement>().GetDazed();
+            }));
+
+            mySequence.Append(Camera.main.DOFieldOfView(25, 0.5f).OnComplete(()=>
+            {
+	            Time.timeScale = 1f;
+	            Time.fixedDeltaTime = 0.02f * Time.timeScale; 
+            })) ;
+
+            mySequence.Play().OnComplete(() =>
+            {
+	            AudienceManager.Instance.SetApproval(transform, approval);
+	            AudienceManager.Instance.Laugh();
+            });
+
+            fartText.text = (--fartStorage).ToString();
 
         }
-		else
+		else if(fartStorage > 0)
 		{
             animator.Fart();
             AudienceManager.Instance.SetApproval(transform, disapproval);
 			AudienceManager.Instance.Hate();
+			fartText.text = (--fartStorage).ToString();
         }
     }
 	
 	// on trigger enter add tool to available tools list
- }
+
+	private void OnCollisionEnter(Collision other)
+	{
+		if (other.transform.CompareTag("Food"))
+		{
+			fartText.text = (++fartStorage).ToString();
+			Destroy(other.gameObject);
+		}
+	}
+}

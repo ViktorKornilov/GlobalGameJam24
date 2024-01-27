@@ -85,6 +85,8 @@ public class Animator : MonoBehaviour
     public void Fart()
     {
         fartParticles.Play();
-        fartSound.Play();
+        
+        if(fartSound != null)
+            fartSound.Play();
     }
 }

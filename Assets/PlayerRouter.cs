@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
 
 public class PlayerRouter : MonoBehaviour
@@ -45,9 +46,10 @@ public class PlayerRouter : MonoBehaviour
 
 		try
 		{
+			Assert.IsNotNull(character);
 			playerInput.actions["Move"].performed += ctx => character.Move(ctx.ReadValue<Vector2>());
 			playerInput.actions["Move"].canceled += ctx => character.Move(Vector2.zero);
-
+			
 			playerInput.actions["Fire"].performed += _ => character.Hit();
 			playerInput.actions["Drop"].performed += _ => character.Fart();
 		}
