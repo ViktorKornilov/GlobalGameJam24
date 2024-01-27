@@ -846,7 +846,7 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    WebGL: AMPLIFY_SHADER_EDITOR
+    WebGL: AMPLIFY_SHADER_EDITOR;__MICROSPLAT__
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
