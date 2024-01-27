@@ -112,8 +112,8 @@ public class Movement : MonoBehaviour
 		if(fartCooldownLeft > 0) return;
 		
 		fartCooldownLeft = fartCooldown;
-		
-		var ray = new Ray(transform.position, transform.forward);
+
+        /*var ray = new Ray(transform.position, transform.forward);
 		if (Physics.Raycast(ray, out var hit, 2))
 		{
 			transform.DOLookAt(-hit.point, 0.1f).OnComplete(() => animator.Fart());
@@ -126,8 +126,21 @@ public class Movement : MonoBehaviour
 		{
 			animator.Fart();
 			AudienceManager.Instance.SetApproval(transform, disapproval);
-		}
-	}
+		}*/
+
+        if (Vector3.Distance(transform.position, enemy.position) < hitDistance)
+        {
+            //enemy.GetComponent<Movement>().GetDazed();
+			
+
+        }
+		else
+		{
+            animator.Fart();
+            AudienceManager.Instance.SetApproval(transform, disapproval);
+			AudienceManager.Instance.Hate();
+        }
+    }
 	
 	// on trigger enter add tool to available tools list
  }

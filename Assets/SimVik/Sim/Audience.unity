@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -560,7 +560,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1780037188578665921, guid: 05861bbdb6546441fa741144dfa1ab80, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.42650402
+      value: -0.42650408
       objectReference: {fileID: 0}
     - target: {fileID: 1780037188578665921, guid: 05861bbdb6546441fa741144dfa1ab80, type: 3}
       propertyPath: m_LocalRotation.x
@@ -568,7 +568,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1780037188578665921, guid: 05861bbdb6546441fa741144dfa1ab80, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.77774185
+      value: -0.77774197
       objectReference: {fileID: 0}
     - target: {fileID: 1780037188578665921, guid: 05861bbdb6546441fa741144dfa1ab80, type: 3}
       propertyPath: m_LocalRotation.z
@@ -918,8 +918,9 @@ MonoBehaviour:
   cheers: {fileID: 8300000, guid: ef40b9a081c1c4d7aa1962e5c91aaf4a, type: 3}
   boo: {fileID: 8300000, guid: 6809ee4bdc8d94f59b700a76082c3b66, type: 3}
   laugh: {fileID: 8300000, guid: d526e88af1dd04ba49fa117414b5d1f2, type: 3}
+  ew: {fileID: 8300000, guid: 18092e9032479624b93ccfd57428b5b5, type: 3}
   chanceToReact: 0.1
-  startingDistance: 5
+  startingDistance: 7
 --- !u!4 &736294249
 Transform:
   m_ObjectHideFlags: 0
@@ -1884,7 +1885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.86274517, b: 0.4156863, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2414,7 +2415,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6120970283108492358, guid: c7f010dddc3784f3db9c759218663b1f, type: 3}
       propertyPath: state
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6120970283108492358, guid: c7f010dddc3784f3db9c759218663b1f, type: 3}
       propertyPath: fartSound
@@ -2502,7 +2503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7490196, g: 0.34901962, b: 0.6392157, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2704,7 +2705,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1780037188578665921, guid: 05861bbdb6546441fa741144dfa1ab80, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.20108931
+      value: -0.20108934
       objectReference: {fileID: 0}
     - target: {fileID: 1780037188578665921, guid: 05861bbdb6546441fa741144dfa1ab80, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2712,7 +2713,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1780037188578665921, guid: 05861bbdb6546441fa741144dfa1ab80, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.8639162
+      value: -0.86391634
       objectReference: {fileID: 0}
     - target: {fileID: 1780037188578665921, guid: 05861bbdb6546441fa741144dfa1ab80, type: 3}
       propertyPath: m_LocalRotation.z
@@ -2782,7 +2783,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1463391213754159838, guid: c7f010dddc3784f3db9c759218663b1f, type: 3}
       propertyPath: looping
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1463391213754159838, guid: c7f010dddc3784f3db9c759218663b1f, type: 3}
       propertyPath: lengthInSec

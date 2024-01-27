@@ -5,6 +5,7 @@ using DG.Tweening;
 using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
+
 [System.Serializable]
 public class PlayerInfo
 {
@@ -12,6 +13,7 @@ public class PlayerInfo
     public float approval = 0;
     public Transform uiBar;
 }
+
 public class AudienceManager : MonoBehaviour
 {
     public static AudienceManager Instance;
@@ -31,6 +33,8 @@ public class AudienceManager : MonoBehaviour
     public AudioClip cheers;
     public AudioClip boo;
     public AudioClip laugh;
+    public AudioClip ew;
+
     
     [Header("Brains")]
     [Range(0,1)]
@@ -170,6 +174,11 @@ public class AudienceManager : MonoBehaviour
         {
             Cheer(i);
         }
+    }
+
+    public void Hate()
+    {
+        Audio.PlaySound(ew, 1);
     }
 
     public void SetApproval(Transform player, float approval)
