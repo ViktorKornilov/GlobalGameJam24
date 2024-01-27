@@ -185,7 +185,7 @@ public class AudienceManager : MonoBehaviour
 
                 if (p.approval < 0) p.approval = 0;
                 
-                p.uiBar.DOScaleX(p.approval / 100f * 5, 0.3f).SetEase(Ease.OutBounce);
+                p.uiBar.DOScaleX(p.approval / 100f, 0.3f).SetEase(Ease.OutBounce);
                 return;
             }
         }

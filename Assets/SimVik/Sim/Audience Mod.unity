@@ -379,7 +379,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1307526839}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 804560ed3def34ff2bb19ee0a65e57c2, type: 3}
       propertyPath: m_LocalScale.x
@@ -395,7 +395,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 804560ed3def34ff2bb19ee0a65e57c2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.56
+      value: 0.26
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 804560ed3def34ff2bb19ee0a65e57c2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -403,7 +403,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 804560ed3def34ff2bb19ee0a65e57c2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.75
+      value: 2.25
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 804560ed3def34ff2bb19ee0a65e57c2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -411,7 +411,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 804560ed3def34ff2bb19ee0a65e57c2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 804560ed3def34ff2bb19ee0a65e57c2, type: 3}
       propertyPath: m_LocalRotation.y
@@ -461,6 +461,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1208233496}
   m_SourcePrefab: {fileID: 100100000, guid: 804560ed3def34ff2bb19ee0a65e57c2, type: 3}
+--- !u!4 &389615736 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 804560ed3def34ff2bb19ee0a65e57c2, type: 3}
+  m_PrefabInstance: {fileID: 389615735}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &396340411 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7420103282258158232, guid: 05861bbdb6546441fa741144dfa1ab80, type: 3}
@@ -884,6 +889,7 @@ MonoBehaviour:
   players:
   - transform: {fileID: 1412304389}
     approval: 0
+    uiBar: {fileID: 0}
   palette:
   - {r: 0.98039216, g: 0.30196077, b: 0.53328747, a: 1}
   - {r: 1, g: 0.76025844, b: 0.3915094, a: 1}
@@ -1538,6 +1544,7 @@ Transform:
   - {fileID: 124990290}
   - {fileID: 49133641}
   - {fileID: 1814001876}
+  - {fileID: 389615736}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1351845244 stripped
@@ -1581,9 +1588,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecfba9302e7884d26936050238bb72d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
+  hitDistance: 3
+  bot: 1
+  animator: {fileID: 0}
   maxMoveSpeed: 5
   acceleration: 20
   rotateSpeed: 360
+  hitCooldown: 1
+  hitCooldownLeft: 0
+  fartCooldown: 1
+  fartCooldownLeft: 0
+  hitCollider: {fileID: 0}
+  swooshSound: {fileID: 0}
+  butt: {fileID: 0}
+  approval: 10
+  disapproval: -10
+  canMove: 1
 --- !u!65 &1412304386
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1705,6 +1726,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd4a64e48c19a4251833d0b23f5756d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
+  hitRange: 10
   closestTool: {fileID: 0}
   availableTools: []
   equipPopup: {fileID: 1961541621}
@@ -2731,7 +2754,6 @@ SceneRoots:
   - {fileID: 1285187057}
   - {fileID: 927157776}
   - {fileID: 1916855487}
-  - {fileID: 389615735}
   - {fileID: 847221486}
   - {fileID: 736294249}
   - {fileID: 1719120442}

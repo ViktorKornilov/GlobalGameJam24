@@ -31,8 +31,8 @@ public class Movement : MonoBehaviour
 	public Transform butt;
 
 	[Header("Approval")] 
-	public float approval = 10;
-	public float disapproval = -10;
+	public float approval = 2;
+	public float disapproval = -2;
 	
 	public bool canMove = true;
 
