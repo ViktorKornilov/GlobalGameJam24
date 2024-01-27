@@ -17,6 +17,7 @@ public class CameraFollow : MonoBehaviour
 		var pos = Vector3.zero;
 		foreach (var t in target)
 		{
+			if (t == null) continue;
 			pos += t.position;
 		}
 		pos /= target.Count;

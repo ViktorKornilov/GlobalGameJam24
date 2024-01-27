@@ -11,8 +11,8 @@ public class Audio : Singleton<Audio>
 	 }
 
 	 // STATIC METHODS
-	 public static void PlaySound(AudioClip clip)
+	 public static void PlaySound(AudioClip clip,float volume = 1f)
 	 {
-		 Instance.audioSource.PlayOneShot(clip);
+		 Instance.audioSource.PlayOneShot(clip,volume);
 	 }
 }
