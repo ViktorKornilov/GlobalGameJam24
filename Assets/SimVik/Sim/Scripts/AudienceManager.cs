@@ -98,12 +98,12 @@ public class AudienceManager : MonoBehaviour
                         //TODO: check approval
                         if (player.approval >= 50)
                         {
-                            Audio.PlaySound(cheers);
+                            Audio.PlaySound(cheers, 0.5f);
                             Cheer(i);
                         }
                         else
                         {
-                            Audio.PlaySound(boo);
+                            Audio.PlaySound(boo, 0.5f);
                             Shout(i);
                         }
                         
@@ -165,7 +165,7 @@ public class AudienceManager : MonoBehaviour
 
     public void Laugh()
     {
-        Audio.PlaySound(laugh);
+        Audio.PlaySound(laugh, 1);
         for (int i = 0; i < segments; i++)
         {
             Cheer(i);

@@ -120,6 +120,7 @@ public class Movement : MonoBehaviour
 			//ransform.DORotate(Vector3.up * 180, 0.1f).OnComplete(() => animator.Fart());
 			
 			AudienceManager.Instance.SetApproval(transform, approval);
+			AudienceManager.Instance.Laugh();
 		}
 		else
 		{

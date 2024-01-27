@@ -11,7 +11,7 @@ public class CameraFollow : MonoBehaviour
 
 	void LateUpdate()
 	{
-		if (target.Count > 0) return;
+		if (target.Count == 0) return;
 		
 		//find mid pos of all targets
 		var pos = Vector3.zero;

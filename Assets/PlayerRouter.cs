@@ -32,6 +32,7 @@ public class PlayerRouter : MonoBehaviour
 		foreach (var player in AudienceManager.Instance.players)
 		{
 			var m = player.transform.GetComponent<Movement>();
+			
 			if (m.bot)
 			{
 				character = m;
