@@ -82,6 +82,7 @@ public class AudienceManager : MonoBehaviour
                 
                 var person = Instantiate(observerPrefab, new Vector3(x, arenaHeight, z) + new Vector3(px, arenaHeight, pz), Quaternion.identity);
                 person.transform.LookAt(Vector3.zero);
+                person.transform.parent = transform;
                 //every person should have different color
                 person.GetComponentInChildren<Renderer>().material.color = palette[Random.Range(0, palette.Count)];
                 

@@ -22,6 +22,7 @@ public class Movement : MonoBehaviour
 	public float rotateSpeed = 720;
 	Vector3 velocity;
 	Rigidbody rb;
+	public AudioSource moveSource;
 	
 	[Header("Hitting")]
 	public float hitCooldown = 1f;
@@ -31,6 +32,7 @@ public class Movement : MonoBehaviour
 	public GameObject hitCollider;
 	public AudioClip swooshSound;
 	public Transform butt;
+	public Color fartColor;
 
 	[Header("Approval")] 
 	public float approval = 2;
@@ -59,7 +61,12 @@ public class Movement : MonoBehaviour
 		// rotate to face direction of movement
 		if (moveDirection != Vector3.zero)
 		{
+			moveSource.volume = 1;
 			transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(moveDirection), rotateSpeed * Time.deltaTime);
+		}
+		else
+		{
+			moveSource.volume = 0;
 		}
 		
 		if(hitCooldownLeft > 0) hitCooldownLeft -= Time.deltaTime;
@@ -79,7 +86,10 @@ public class Movement : MonoBehaviour
 			animator.state = AnimationState.Dazed;
 		
 		Invoke(nameof(GetUp), 5);
-		
+
+		// dotween make mat blink to white
+		GetComponentInChildren<Renderer>().material.DOColor(fartColor, 0.07f).SetLoops(6, LoopType.Yoyo);
+
 		AudienceManager.Instance.SetApproval(transform, disapproval);
 	}
 
@@ -100,10 +110,6 @@ public class Movement : MonoBehaviour
 		hitCooldownLeft = hitCooldown;
 
 
-		//hitCollider.SetActive(true);
-		//await new WaitForSeconds(0.1f);
-		//hitCollider.SetActive(false);
-		//swooshSound.Play();
 		
 		if (Vector3.Distance(transform.position, enemy.position) < hitDistance)
 		{

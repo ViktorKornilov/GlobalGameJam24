@@ -23,5 +23,10 @@ namespace SimVik.Utility
 				return instance;
 			}
 		}
+
+		void OnDestroy()
+		{
+			instance = null;
+		}
 	}
 }

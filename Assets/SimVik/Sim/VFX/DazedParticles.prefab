@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 324389855315330913}
   - component: {fileID: 9028908467736277585}
   - component: {fileID: 1107431617214286133}
+  - component: {fileID: -6999807721994603874}
   m_Layer: 0
   m_Name: DazedParticles
   m_TagString: Untagged
@@ -4858,3 +4859,20 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &-6999807721994603874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5516883008340613640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4be3d9a21e1747e3832741b8f38cc7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: bb8388895c79843bebcde915910afbbe, type: 3}
+  volume: 1
+  pitchVariance: 0.293
+  playOnStart: 1

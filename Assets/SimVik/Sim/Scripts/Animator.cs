@@ -31,8 +31,7 @@ public class Animator : MonoBehaviour
     [Header("VFX")] 
     public GameObject dazedParticles;
     public ParticleSystem fartParticles;
-    public AudioSource fartSound;
-    
+
     private float armSpeedOffset;
     private float headSpeedOffset;
 
@@ -85,8 +84,5 @@ public class Animator : MonoBehaviour
     public void Fart()
     {
         fartParticles.Play();
-        
-        if(fartSound != null)
-            fartSound.Play();
     }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2463844574729998086}
   - component: {fileID: 9088742059203967196}
   - component: {fileID: 1023535852321545360}
+  - component: {fileID: 7491598473799616965}
   m_Layer: 0
   m_Name: Farticle
   m_TagString: Untagged
@@ -4897,3 +4898,24 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &7491598473799616965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6819109752422972746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4be3d9a21e1747e3832741b8f38cc7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 6acf78543df2345ae9d8616bbf3ee254, type: 3}
+  - {fileID: 8300000, guid: ed42fad8a11464a7aac8b108f711f612, type: 3}
+  - {fileID: 8300000, guid: 1e5dc212f935e463cbf80ad24cb9ca32, type: 3}
+  - {fileID: 8300000, guid: 829e29d9134994c858df3bea13e4e752, type: 3}
+  - {fileID: 8300000, guid: 98059c342d0a14d58a4e329e1b01cbe2, type: 3}
+  volume: 1
+  pitchVariance: 0.238
+  playOnStart: 1
