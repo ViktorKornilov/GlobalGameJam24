@@ -1,10 +1,8 @@
-using System;
-using System.Collections.Generic;
 using DG.Tweening;
-using SimVik;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class Movement : MonoBehaviour
 {
@@ -43,7 +41,7 @@ public class Movement : MonoBehaviour
 	public float disapproval = -2;
 
 	public TextMeshProUGUI fartText;
-	private int fartStorage = 0;
+	public int fartAmmo = 0;
 	
 	public bool canMove = true;
 
@@ -122,29 +120,16 @@ public class Movement : MonoBehaviour
 		}
 	}
 
+	public bool CanFart() => fartCooldownLeft <= 0 && fartAmmo > 0;
+
 	public void Fart()
 	{
-		if(fartCooldownLeft > 0) return;
-		
+		if(!CanFart())return;
+
 		fartCooldownLeft = fartCooldown;
 		OnFart.Invoke();
 
-        /*var ray = new Ray(transform.position, transform.forward);
-		if (Physics.Raycast(ray, out var hit, 2))
-		{
-			transform.DOLookAt(-hit.point, 0.1f).OnComplete(() => animator.Fart());
-			//ransform.DORotate(Vector3.up * 180, 0.1f).OnComplete(() => animator.Fart());
-			
-			AudienceManager.Instance.SetApproval(transform, approval);
-			AudienceManager.Instance.Laugh();
-		}
-		else
-		{
-			animator.Fart();
-			AudienceManager.Instance.SetApproval(transform, disapproval);
-		}*/
-
-        if (Vector3.Distance(transform.position, enemy.position) < hitDistance && fartStorage > 0)
+        if (Vector3.Distance(transform.position, enemy.position) < hitDistance)
         {
 	        Sequence mySequence = DOTween.Sequence();
 
@@ -172,17 +157,16 @@ public class Movement : MonoBehaviour
 	            AudienceManager.Instance.Laugh();
             });
 
-            fartText.text = (--fartStorage).ToString();
-
+            fartText.text = (--fartAmmo).ToString();
         }
-		else if(fartStorage > 0)
-		{
-            animator.Fart();
-            AudienceManager.Instance.SetApproval(transform, disapproval);
-			AudienceManager.Instance.Hate();
-			fartText.text = (--fartStorage).ToString();
+        else
+        {
+	        animator.Fart();
+	        AudienceManager.Instance.SetApproval(transform, disapproval);
+	        AudienceManager.Instance.Hate();
+	        fartText.text = (--fartAmmo).ToString();
         }
-    }
+	}
 	
 	// on trigger enter add tool to available tools list
 
@@ -190,7 +174,7 @@ public class Movement : MonoBehaviour
 	{
 		if (other.transform.CompareTag("Food"))
 		{
-			fartText.text = (++fartStorage).ToString();
+			fartText.text = (++fartAmmo).ToString();
 			Destroy(other.gameObject);
 		}
 	}

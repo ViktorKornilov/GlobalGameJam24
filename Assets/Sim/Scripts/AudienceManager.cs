@@ -188,8 +188,9 @@ public class AudienceManager : MonoBehaviour
         inAction[segmentIndex] = false;
     }
 
-    public void Laugh()
+    public async void Laugh()
     {
+        await new WaitForSeconds(0.5f);
         Audio.PlaySound(laugh, 1);
         for (int i = 0; i < segments; i++)
         {
@@ -197,8 +198,9 @@ public class AudienceManager : MonoBehaviour
         }
     }
 
-    public void Hate()
+    public async void Hate()
     {
+        await new WaitForSeconds(0.5f);
         Audio.PlaySound(ew, 1);
     }
 

@@ -726,6 +726,7 @@ GameObject:
   m_Component:
   - component: {fileID: 593444810}
   - component: {fileID: 593444811}
+  - component: {fileID: 593444812}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -760,6 +761,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e099e537aee2f4bf4976b414625e72b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fartSound: {fileID: 593444812}
+--- !u!114 &593444812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593444809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4be3d9a21e1747e3832741b8f38cc7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 6acf78543df2345ae9d8616bbf3ee254, type: 3}
+  - {fileID: 8300000, guid: ed42fad8a11464a7aac8b108f711f612, type: 3}
+  - {fileID: 8300000, guid: 1e5dc212f935e463cbf80ad24cb9ca32, type: 3}
+  - {fileID: 8300000, guid: 829e29d9134994c858df3bea13e4e752, type: 3}
+  - {fileID: 8300000, guid: 98059c342d0a14d58a4e329e1b01cbe2, type: 3}
+  volume: 1
+  pitchVariance: 0.1
+  playOnStart: 0
 --- !u!1001 &628390202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6744,6 +6767,8 @@ MonoBehaviour:
   AngleMultiplier: 0.4
   SpeedMultiplier: 1
   CurveScale: 1
+  m_TextComponent: {fileID: 0}
+  hasTextChanged: 0
 --- !u!1 &1343400377 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9015066688549381545, guid: c7f010dddc3784f3db9c759218663b1f, type: 3}
@@ -7308,6 +7333,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5628451615537953705, guid: c7f010dddc3784f3db9c759218663b1f, type: 3}
   m_PrefabInstance: {fileID: 1905370327}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1912253214 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6432067514283618551, guid: c7f010dddc3784f3db9c759218663b1f, type: 3}
+  m_PrefabInstance: {fileID: 3684987527072954631}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1912253221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912253214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 271e549c29d74433e8ecd1887da59257, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomChoiceInterval: 5
+  wanderRadius: 7
+  burgerRange: 7
+  playerRange: 10
+  fartRange: 3
 --- !u!1 &1913194839
 GameObject:
   m_ObjectHideFlags: 0
@@ -7726,6 +7773,8 @@ MonoBehaviour:
   AngleMultiplier: 0.4
   SpeedMultiplier: 1
   CurveScale: 1
+  m_TextComponent: {fileID: 0}
+  hasTextChanged: 0
 --- !u!1001 &1977861412
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7928,6 +7977,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6432067514283618551, guid: c7f010dddc3784f3db9c759218663b1f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1912253221}
     - targetCorrespondingSourceObject: {fileID: 9015066688549381545, guid: c7f010dddc3784f3db9c759218663b1f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1343400380}
