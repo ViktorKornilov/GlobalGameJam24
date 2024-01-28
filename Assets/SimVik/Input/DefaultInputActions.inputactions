@@ -243,6 +243,17 @@
                 },
                 {
                     "name": "",
+                    "id": "de95c6b9-6759-4131-a372-91cb0b6d33a3",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "cb34baae-933d-4536-84cb-2c710b8c8cbd",
                     "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
@@ -267,6 +278,28 @@
                     "name": "",
                     "id": "d40b8a69-cd07-4ea5-aab5-8708b732909f",
                     "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Drop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "87b4bd04-4442-4ab6-8242-9b28ac63a50f",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Drop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b2758623-42e6-487e-a0c0-1f1f48fdd0db",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

@@ -4,9 +4,13 @@ using DG.Tweening;
 using SimVik;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Movement : MonoBehaviour
 {
+
+	public static UnityEvent OnFart = new();
+	public static UnityEvent onDaze = new();
 	
 	public Transform enemy;
 	public float hitDistance = 3;
@@ -80,6 +84,7 @@ public class Movement : MonoBehaviour
 
 	public void GetDazed()
 	{
+		onDaze.Invoke();
 		canMove = false;
 		
 		if(animator != null)
@@ -122,6 +127,7 @@ public class Movement : MonoBehaviour
 		if(fartCooldownLeft > 0) return;
 		
 		fartCooldownLeft = fartCooldown;
+		OnFart.Invoke();
 
         /*var ray = new Ray(transform.position, transform.forward);
 		if (Physics.Raycast(ray, out var hit, 2))

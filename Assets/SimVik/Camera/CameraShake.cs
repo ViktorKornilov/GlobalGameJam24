@@ -7,6 +7,6 @@ public class CameraShake : Singleton<CameraShake>
 
 	 public static void Shake()
 	 {
-		 Instance.transform.DOShakePosition( 0.5f, 0.5f, 10, 90, false, true);
+		 Instance.transform.DOShakePosition( 0.5f,0.5f);
 	 }
 }
