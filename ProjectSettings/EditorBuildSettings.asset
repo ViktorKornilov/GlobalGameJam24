@@ -9,9 +9,9 @@ EditorBuildSettings:
     path: Assets/SimVik/Leaderboards/LeaderboardTest.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 0
-    path: Assets/SimVik/Input/InputTest.unity
+    path: Assets/SimVik/Input/Example/InputTest.unity
     guid: f19cc1660643c4cd5af928472030d2ab
   - enabled: 1
-    path: Assets/SimVik/Sim/Audience.unity
+    path: Assets/Sim/Audience.unity
     guid: d3eb5d8994eef4ed192fdb28c4f07c8d
   m_configObjects: {}
