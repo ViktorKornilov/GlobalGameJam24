@@ -38,6 +38,7 @@ public class PlayerRouter : MonoBehaviour
 			{
 				character = m;
 				character.bot = false;
+				character.GetComponent<Brains>().enabled = false;
 				break;
 			}
 		}

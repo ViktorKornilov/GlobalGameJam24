@@ -94,7 +94,7 @@ public class Movement : MonoBehaviour
 		if(animator != null)
 			animator.state = AnimationState.Dazed;
 		
-		Invoke(nameof(GetUp), 3);
+		Invoke(nameof(GetUp), 1.5f);
 
 		// dotween make mat blink to white
 		GetComponentInChildren<Renderer>().material.DOColor(fartColor, 0.07f).SetLoops(6, LoopType.Yoyo);
@@ -145,6 +145,7 @@ public class Movement : MonoBehaviour
 		var poopChance = Random.Range(0, 100);
 		if( poopChance < 50)
 		{
+			AudienceManager.Instance.SetApproval(transform, Random.Range(1, 5));
 			var poop = Instantiate(poopPrefab, butt.position, butt.rotation);
 			poop.GetComponent<Rigidbody>().AddForce(-transform.forward * 2, ForceMode.Impulse);
 		}
