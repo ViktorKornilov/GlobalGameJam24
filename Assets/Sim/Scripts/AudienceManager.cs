@@ -37,6 +37,7 @@ public class AudienceManager : MonoBehaviour
     [Header("Clips")] 
 
     public AudioClip boo;
+    public AudioClip cheers;
 
     
     [Header("Brains")]
@@ -146,7 +147,7 @@ public class AudienceManager : MonoBehaviour
                         //TODO: check approval
                         if (player.approval >= 50)
                         {
-                            //Audio.PlaySound(cheers, 0.05f);
+                            Audio.PlaySound(cheers, 0.01f);
                             Cheer(i);
                         }
                         else

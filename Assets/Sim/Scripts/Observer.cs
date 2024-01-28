@@ -53,6 +53,7 @@ public class Observer : MonoBehaviour
         
         leftArm.rotation = leftRotation;
         rightArm.rotation = rightRotation;
+        //transform.position += Mathf.Abs(Mathf.Sin(Time.time * 20 + offset)) * Vector3.up * 0.1f;
     }
     
     public void Shout(float time)
