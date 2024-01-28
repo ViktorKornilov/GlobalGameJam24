@@ -1546,7 +1546,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: af9a26b6582ba4214bc0f27af4a79b90, type: 3}
   volume: 1
   pitchVariance: 0.1
-  playOnStart: 1
+  playOnStart: 0
 --- !u!1 &765056420
 GameObject:
   m_ObjectHideFlags: 0

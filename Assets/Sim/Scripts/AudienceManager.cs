@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 [System.Serializable]
@@ -15,6 +16,8 @@ public class PlayerInfo
 public class AudienceManager : MonoBehaviour
 {
     public static AudienceManager Instance;
+    public static UnityEvent onLaugh = new UnityEvent();
+    public static UnityEvent onHate = new UnityEvent();
     
     public List<PlayerInfo> players;
 
@@ -32,11 +35,8 @@ public class AudienceManager : MonoBehaviour
     public float arenaHeight = 3;
 
     [Header("Clips")] 
-    public AudioClip cheers;
-    public AudioClip boo;
 
-    public SoundPlayer laugh;
-    public SoundPlayer ew;
+    public AudioClip boo;
 
     
     [Header("Brains")]
@@ -53,7 +53,30 @@ public class AudienceManager : MonoBehaviour
     {
         if(Instance == null) Instance = this;
         else Destroy(gameObject);
+        onLaugh.AddListener(Cheer);
+        onHate.AddListener(Shout);
     }
+
+    void Cheer()
+    {
+
+        for (int i = 0; i < segments; i++)
+        {
+        	Cheer(i);
+        }
+    }
+
+    void Shout()
+    {
+
+        for (int i = 0; i < segments; i++)
+        {
+        	Shout(i);
+        }
+    }
+
+
+
 
     void Start()
     {
@@ -123,7 +146,7 @@ public class AudienceManager : MonoBehaviour
                         //TODO: check approval
                         if (player.approval >= 50)
                         {
-                            Audio.PlaySound(cheers, 0.05f);
+                            //Audio.PlaySound(cheers, 0.05f);
                             Cheer(i);
                         }
                         else
@@ -186,22 +209,6 @@ public class AudienceManager : MonoBehaviour
             member.GetComponent<Observer>().Shout(0.5f);
         }
         inAction[segmentIndex] = false;
-    }
-
-    public async void Laugh()
-    {
-        await new WaitForSeconds(0.5f);
-        laugh.Play();
-        for (int i = 0; i < segments; i++)
-        {
-            Cheer(i);
-        }
-    }
-
-    public async void Hate()
-    {
-        await new WaitForSeconds(0.5f);
-        ew.Play();
     }
 
     public void SetApproval(Transform player, float approval)

@@ -17,6 +17,7 @@ public class SoundPlayer : MonoBehaviour
 
     public void Play()
     {
+        print ("Playing sound");
         if (clips.Count == 0) return;
         var clip = clips[Random.Range(0, clips.Count)];
         var pitch = Random.Range(1f - pitchVariance, 1f + pitchVariance);

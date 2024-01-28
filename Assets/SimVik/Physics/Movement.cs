@@ -9,6 +9,8 @@ public class Movement : MonoBehaviour
 
 	public static UnityEvent OnFart = new();
 	public static UnityEvent onDaze = new();
+	public static UnityEvent onHit = new();
+	public static UnityEvent onMiss = new();
 	
 	public Transform enemy;
 	public float hitDistance = 3;
@@ -96,9 +98,8 @@ public class Movement : MonoBehaviour
 		
 		Invoke(nameof(GetUp), 1.5f);
 
-		// dotween make mat blink to white
-		GetComponentInChildren<Renderer>().material.DOColor(fartColor, 0.07f).SetLoops(6, LoopType.Yoyo);
-
+		// sacle for short time
+		transform.DOScale( Vector3.one * 1.5f, 0.2f).SetEase(Ease.Linear).SetLoops( 2, LoopType.Yoyo);
 		AudienceManager.Instance.SetApproval(transform, disapproval);
 	}
 
@@ -128,7 +129,7 @@ public class Movement : MonoBehaviour
 
 	public bool CanFart() => fartCooldownLeft <= 0 && fartAmmo > 0;
 
-	public void Fart()
+	public async void Fart()
 	{
 		if(!CanFart())return;
 
@@ -140,7 +141,6 @@ public class Movement : MonoBehaviour
 		var obj = Instantiate( fartParticles, butt.position, Quaternion.identity);
 		obj.transform.forward = -transform.forward;
 		obj.transform.name = transform.name + " fart";
-		Destroy( obj.GetComponent<Collider>(),0.5f);
 
 		var poopChance = Random.Range(0, 100);
 		if( poopChance < 50)
@@ -156,11 +156,20 @@ public class Movement : MonoBehaviour
 			pos.y = -0.47f;
 			var rot = Quaternion.Euler(90, Random.Range(0, 360), 0);
 			var stain = Instantiate(poopStain, pos, rot);
-			stain.transform.localScale = Vector3.one * Random.Range(0.75f, 1.25f);
+			var scale = Vector3.one * Random.Range(0.75f, 1.25f);
+			stain.transform.DOScale(scale, 2f).SetEase(Ease.OutExpo).ChangeStartValue( Vector3.zero);
 		}
 
 		fartText.text = fartAmmo.ToString();
 		fartText.transform.DOLocalRotate( Vector3.forward * 360, 0.5f, RotateMode.FastBeyond360);
+
+		await new WaitForSeconds(0.5f);
+		var col = obj.GetComponent<Collider>();
+		if (col != null)
+		{
+			Destroy(col);
+			onMiss.Invoke();
+		}
 	}
 	
 	// on trigger enter add tool to available tools list
@@ -187,6 +196,7 @@ public class Movement : MonoBehaviour
 
 			// destroy trigger
 			Destroy(other.gameObject.GetComponent(typeof(Collider)));
+			onHit.Invoke();
 		}
 	}
 }
