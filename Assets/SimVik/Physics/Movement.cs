@@ -94,7 +94,7 @@ public class Movement : MonoBehaviour
 		if(animator != null)
 			animator.state = AnimationState.Dazed;
 		
-		Invoke(nameof(GetUp), 5);
+		Invoke(nameof(GetUp), 3);
 
 		// dotween make mat blink to white
 		GetComponentInChildren<Renderer>().material.DOColor(fartColor, 0.07f).SetLoops(6, LoopType.Yoyo);

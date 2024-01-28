@@ -123,12 +123,12 @@ public class AudienceManager : MonoBehaviour
                         //TODO: check approval
                         if (player.approval >= 50)
                         {
-                            Audio.PlaySound(cheers, 0.5f);
+                            Audio.PlaySound(cheers, 0.05f);
                             Cheer(i);
                         }
                         else
                         {
-                            Audio.PlaySound(boo, 0.5f);
+                            Audio.PlaySound(boo, 0.05f);
                             Shout(i);
                         }
                         
