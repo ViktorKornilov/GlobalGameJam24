@@ -57,7 +57,10 @@ public class Movement : MonoBehaviour
 		
 		// movement
 		velocity = Vector3.MoveTowards( velocity, moveDirection * maxMoveSpeed, acceleration * Time.deltaTime);
-		velocity = Vector3.ClampMagnitude(velocity, maxMoveSpeed);
+		if (velocity.magnitude > maxMoveSpeed)
+		{
+			velocity *= 0.97f;
+		}
 		rb.velocity = velocity;
 		rb.angularVelocity = Vector3.zero;
 		// rotate to face direction of movement
@@ -128,44 +131,9 @@ public class Movement : MonoBehaviour
 
 		fartCooldownLeft = fartCooldown;
 		OnFart.Invoke();
+		velocity += transform.forward * 30;
 
-        if (Vector3.Distance(transform.position, enemy.position) < hitDistance)
-        {
-	        Sequence mySequence = DOTween.Sequence();
-
-	        mySequence.Append(Camera.main.DOFieldOfView(10, 0.5f).OnComplete(()=>
-                              	        {
-                              		        Time.timeScale = 0.5f;
-                              		        Time.fixedDeltaTime = 0.02f * Time.timeScale; 
-                              	        }));
-            
-            mySequence.Append(transform.DOLookAt(-enemy.position, 0.1f).OnComplete(() =>
-            {
-	            animator.Fart();
-	            enemy.GetComponent<Movement>().GetDazed();
-            }));
-
-            mySequence.Append(Camera.main.DOFieldOfView(25, 0.5f).OnComplete(()=>
-            {
-	            Time.timeScale = 1f;
-	            Time.fixedDeltaTime = 0.02f * Time.timeScale; 
-            })) ;
-
-            mySequence.Play().OnComplete(() =>
-            {
-	            AudienceManager.Instance.SetApproval(transform, approval);
-	            AudienceManager.Instance.Laugh();
-            });
-
-            fartText.text = (--fartAmmo).ToString();
-        }
-        else
-        {
-	        animator.Fart();
-	        AudienceManager.Instance.SetApproval(transform, disapproval);
-	        AudienceManager.Instance.Hate();
-	        fartText.text = (--fartAmmo).ToString();
-        }
+		animator.Fart();
 	}
 	
 	// on trigger enter add tool to available tools list
@@ -174,7 +142,8 @@ public class Movement : MonoBehaviour
 	{
 		if (other.transform.CompareTag("Food"))
 		{
-			fartText.text = (++fartAmmo).ToString();
+			fartAmmo += 3;
+			fartText.text = fartAmmo.ToString();
 			Destroy(other.gameObject);
 		}
 	}
