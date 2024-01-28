@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
-using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -37,8 +34,9 @@ public class AudienceManager : MonoBehaviour
     [Header("Clips")] 
     public AudioClip cheers;
     public AudioClip boo;
-    public AudioClip laugh;
-    public AudioClip ew;
+
+    public SoundPlayer laugh;
+    public SoundPlayer ew;
 
     
     [Header("Brains")]
@@ -191,7 +189,7 @@ public class AudienceManager : MonoBehaviour
     public async void Laugh()
     {
         await new WaitForSeconds(0.5f);
-        Audio.PlaySound(laugh, 1);
+        laugh.Play();
         for (int i = 0; i < segments; i++)
         {
             Cheer(i);
@@ -201,7 +199,7 @@ public class AudienceManager : MonoBehaviour
     public async void Hate()
     {
         await new WaitForSeconds(0.5f);
-        Audio.PlaySound(ew, 1);
+        ew.Play();
     }
 
     public void SetApproval(Transform player, float approval)
