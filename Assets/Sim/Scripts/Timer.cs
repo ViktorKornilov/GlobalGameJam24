@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using SimVik;
 using TMPro;
 using UnityEngine;
@@ -14,41 +15,32 @@ public class Timer : MonoBehaviour
     public AudioClip timeUpSound;
     public Image radialImage;
 
-    private float time;
-    void Start()
+    public int time = 60;
+    async void Start()
     {
-        time = duration * 60;
-        Invoke( nameof( CountDown), duration * 45);
-         Invoke( nameof( TimeUp), duration * 60);
-    }
-
-    void CountDown()
-    {
-     countdownSound.Play();
-    }
-
-    void TimeUp()
-    {
-        timeUpSound.Play();
-    }
-
-
-    void Update()
-    {
-        if (time < 0)
+        while (time > 0)
         {
-            AudienceManager.Instance.CrownWinner();
-            Invoke(nameof(Restart), 15);
-        }
-        else
-        {
-            time -= Time.deltaTime; 
-            text.text = $"{Mathf.FloorToInt(time / 60)}:{Mathf.FloorToInt(time % 60)}";
-        }
+            time--;
+            // Update UI
+            radialImage.fillAmount = time / (duration * 60);
+            text.text = time.ToString();
+            text.transform.DOLocalRotate( new Vector3(0,0,360), 0.3f, RotateMode.FastBeyond360);
 
-        radialImage.fillAmount = time / (duration * 60);
+            // Special timed events
+            if( time == 10)countdownSound.Play();
+            if (time == 0)
+            {
+                timeUpSound.Play();
+                AudienceManager.Instance.CrownWinner();
+                await new WaitForSeconds(15);
+                Restart();
+                return;
+            }
+
+            await new WaitForSeconds(1);
+        }
     }
-    
+
     void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

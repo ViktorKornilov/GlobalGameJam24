@@ -35,6 +35,9 @@ public class Movement : MonoBehaviour
 	public AudioClip swooshSound;
 	public Transform butt;
 	public Color fartColor;
+	public GameObject fartParticles;
+	public GameObject poopPrefab;
+	public GameObject poopStain;
 
 	[Header("Approval")] 
 	public float approval = 2;
@@ -131,9 +134,32 @@ public class Movement : MonoBehaviour
 
 		fartCooldownLeft = fartCooldown;
 		OnFart.Invoke();
-		velocity += transform.forward * 30;
+		fartAmmo--;
 
-		animator.Fart();
+		velocity += transform.forward * 30;
+		var obj = Instantiate( fartParticles, butt.position, Quaternion.identity);
+		obj.transform.forward = -transform.forward;
+		obj.transform.name = transform.name + " fart";
+		Destroy( obj.GetComponent<Collider>(),0.5f);
+
+		var poopChance = Random.Range(0, 100);
+		if( poopChance < 50)
+		{
+			var poop = Instantiate(poopPrefab, butt.position, butt.rotation);
+			poop.GetComponent<Rigidbody>().AddForce(-transform.forward * 2, ForceMode.Impulse);
+		}
+		var stainChance = Random.Range(0, 100);
+		if( stainChance < 50)
+		{
+			var pos = transform.position;
+			pos.y = -0.47f;
+			var rot = Quaternion.Euler(90, Random.Range(0, 360), 0);
+			var stain = Instantiate(poopStain, pos, rot);
+			stain.transform.localScale = Vector3.one * Random.Range(0.75f, 1.25f);
+		}
+
+		fartText.text = fartAmmo.ToString();
+		fartText.transform.DOLocalRotate( Vector3.forward * 360, 0.5f, RotateMode.FastBeyond360);
 	}
 	
 	// on trigger enter add tool to available tools list
@@ -145,6 +171,21 @@ public class Movement : MonoBehaviour
 			fartAmmo += 3;
 			fartText.text = fartAmmo.ToString();
 			Destroy(other.gameObject);
+		}
+	}
+
+	void OnTriggerEnter(Collider other)
+	{
+		if(other.CompareTag("Fart") && other.transform.name != transform.name + " fart")
+		{
+			// get approval from audience
+			AudienceManager.Instance.SetApproval(transform, approval);
+
+			// get dazed
+			GetDazed();
+
+			// destroy trigger
+			Destroy(other.gameObject.GetComponent(typeof(Collider)));
 		}
 	}
 }

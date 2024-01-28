@@ -8,5 +8,11 @@ public class GameManager : MonoBehaviour
 	{
 		Movement.onDaze.AddListener(CameraShake.Shake);
 		Movement.OnFart.AddListener(fartSound.Play);
+		Movement.OnFart.AddListener(CameraShake.Shake);
+	}
+
+	void Update()
+	{
+
 	}
 }
