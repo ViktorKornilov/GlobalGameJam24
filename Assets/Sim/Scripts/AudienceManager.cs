@@ -82,7 +82,9 @@ public class AudienceManager : MonoBehaviour
                 person.transform.LookAt(Vector3.zero);
                 person.transform.parent = transform;
                 //every person should have different color
-                person.GetComponentInChildren<Renderer>().material.color = palette[Random.Range(0, palette.Count)];
+                var color = palette[Random.Range(0, palette.Count)];
+                person.GetComponentInChildren<Renderer>().material.color = color;
+                person.GetComponent<Observer>().AddPoll(color);
                 
                 audience[s, p] = person.transform;
             }

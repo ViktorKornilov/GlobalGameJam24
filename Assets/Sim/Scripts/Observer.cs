@@ -5,13 +5,26 @@ using DG.Tweening;
 
 public class Observer : MonoBehaviour
 {
+    public List<GameObject> polls;
+    
     public Transform head;
     public Transform rightArm;
     public Transform leftArm;
     
     private Quaternion leftRotation;
     private Quaternion rightRotation;
-    
+
+
+    public void AddPoll(Color color)
+    {
+        //get random poll
+        var poll = polls[Random.Range(0, polls.Count)];
+        poll.SetActive(true);
+        
+        //change renderer color
+        var renderer = poll.GetComponent<Renderer>();
+        renderer.material.color = color;
+    }
     
     void Start()
     {
