@@ -16,3 +16,5 @@ if you want to have more fart charges.
 - Shift to fart
   
 <img width="720" alt="image" src="https://github.com/ViktorKornilov/GlobalGameJam24/assets/39262485/e7cca4c3-e541-41f9-b942-264f9b6ffa68">
+
+Jam Trailer : https://www.youtube.com/watch?v=ffIUPou_pg0
